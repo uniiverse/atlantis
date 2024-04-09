@@ -7,6 +7,7 @@ import (
 
 type PullUpdater struct {
 	HidePrevPlanComments bool
+	DisablePlanComments  bool
 	VCSClient            vcs.Client
 	MarkdownRenderer     *MarkdownRenderer
 }
@@ -17,6 +18,11 @@ func (c *PullUpdater) updatePull(ctx *command.Context, cmd PullCommand, res comm
 		ctx.Log.Err(res.Error.Error())
 	} else if res.Failure != "" {
 		ctx.Log.Warn(res.Failure)
+	}
+
+	if c.DisablePlanComments {
+		ctx.Log.Debug("Plan comments disabled.")
+		return
 	}
 
 	// HidePrevCommandComments will hide old comments left from previous runs to reduce

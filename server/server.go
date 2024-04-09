@@ -685,6 +685,7 @@ func NewServer(userConfig UserConfig, config Config) (*Server, error) {
 
 	pullUpdater := &events.PullUpdater{
 		HidePrevPlanComments: userConfig.HidePrevPlanComments,
+		DisablePlanComments:  userConfig.DisablePlanComments,
 		VCSClient:            vcsClient,
 		MarkdownRenderer:     markdownRenderer,
 	}

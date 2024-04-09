@@ -105,6 +105,7 @@ const (
 	IncludeGitUntrackedFiles         = "include-git-untracked-files"
 	APISecretFlag                    = "api-secret"
 	HidePrevPlanComments             = "hide-prev-plan-comments"
+	DisablePlanComments              = "disable-plan-comments"
 	QuietPolicyChecks                = "quiet-policy-checks"
 	LockingDBType                    = "locking-db-type"
 	LogLevelFlag                     = "log-level"
@@ -496,6 +497,10 @@ var boolFlags = map[string]boolFlag{
 	HidePrevPlanComments: {
 		description: "Hide previous plan comments to reduce clutter in the PR. " +
 			"VCS support is limited to: GitHub.",
+		defaultValue: false,
+	},
+	DisablePlanComments: {
+		description:  "Don't post terraform plan comments on PRs ",
 		defaultValue: false,
 	},
 	IncludeGitUntrackedFiles: {
